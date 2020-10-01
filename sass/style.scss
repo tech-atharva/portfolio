@@ -1,0 +1,278 @@
+$primary: #1e84e4;
+$primary-dark: #003953;
+$main-display: grid;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.mid-loader {
+    height: 100vh;
+    background-color: #00242f;
+    display: grid;
+    place-items: center;
+
+    .loader {
+        background-image: linear-gradient(#00242f, #000000);
+        height: 20rem;
+        width: 20rem;
+        border-radius: 50%;
+        position: relative;
+
+        .loader-main {
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            border: 0.7rem solid #ffffff;
+            border-top: 0.7rem solid $primary;
+            animation: loding 1s linear infinite;
+            transform-style: preserve-3d;
+
+            @keyframes loding {
+                from {
+                    box-shadow: 0rem 0rem 0rem #ffffff,
+                        inset 0rem 0rem 0rem #ffffff;
+                }
+
+                to {
+                    transform: rotate(360deg) rotateX(360deg) rotateY(360deg);
+                    border-bottom: 0.7rem solid $primary;
+                    border-top: 0.7rem solid #ffffff;
+                    box-shadow: 0rem 0rem 3rem #ffffff,
+                        inset 0rem 0rem 3rem #ffffff;
+                }
+            }
+        }
+
+        h1 {
+            position: absolute;
+            top: 50%;
+            color: #ffffff;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            font-size: 2.5rem;
+            text-transform: capitalize;
+        }
+    }
+}
+
+.navbar {
+    background-color: transparent;
+    display: $main-display;
+    grid-template-columns: repeat(2, 50%);
+    height: 5rem;
+    padding: 0% 7rem;
+    position: relative;
+    top: 0%;
+    background-color: #ffffff;
+    left: 0%;
+    box-shadow: 0px 0.2rem 0.5rem #3333339f;
+
+    .burger-container {
+        width: 50%;
+        display: none;
+
+        .burger {
+            border-radius: 0.3rem;
+            border: 2px solid $primary-dark;
+            height: 2.7rem;
+            width: 2.7rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            div {
+                height: 0.3rem;
+                width: 100%;
+                background-color: $primary-dark;
+            }
+        }
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        height: 100%;
+        width: 100%;
+        background-color: #3333339f;
+        transform: skewY(0.2deg);
+        z-index: -1;
+        transform-origin: bottom;
+        filter: blur(1px);
+        transform-style: preserve-3d;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        height: 100%;
+        width: 100%;
+        background-color: #3333339f;
+        transform: skewY(-0.2deg);
+        z-index: -1;
+        transform-origin: bottom;
+        filter: blur(1px);
+        transform-style: preserve-3d;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+
+        h1 {
+            font-size: 1.7rem;
+            text-transform: capitalize;
+
+            a {
+                text-decoration: none;
+                color: #000000;
+                transition: all 0.2s linear;
+
+                &:hover {
+                    color: $primary-dark;
+                }
+            }
+        }
+    }
+
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        a {
+            font-size: 1.3rem;
+            margin: 0rem 1.3rem;
+            text-decoration: none;
+            color: #000000;
+            text-transform: capitalize;
+            position: relative;
+            transition: all 0.2s linear;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0%;
+                width: 0%;
+                left: 0%;
+                right: 0%;
+                margin: auto;
+                height: 0.1rem;
+                background-color: $primary;
+                transition: all 0.1s linear;
+            }
+
+            &:hover {
+                color: $primary;
+
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.body {
+    flex-direction: column;
+}
+
+.main {
+    display: $main-display;
+    height: 60vh;
+    margin: 8.8rem 10rem;
+    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+    grid-gap: 2rem;
+
+    .warp {
+        text-align: center;
+        width: 100%;
+    }
+
+    .sec-title {
+        text-align: center;
+        position: relative;
+        top: 0%;
+        left: 0%;
+        text-transform: capitalize;
+        display: inline-block;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 120%;
+            height: 0.1rem;
+            background-color: #333333;
+            width: 150%;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 120%;
+            height: 0.1rem;
+            background-color: #333333;
+            width: 150%;
+        }
+    }
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .navbar {
+        grid-template-columns: repeat(2, 50%);
+        height: auto;
+        padding: 0% 0%;
+
+        .burger-container {
+            display: flex;
+        }
+
+        .logo {
+            padding: 0% 20%;
+        }
+
+        .nav {
+            justify-content: center;
+            flex-direction: column;
+            height: 0px;
+            transition: all 0.3s linear;
+            overflow: hidden;
+
+            a {
+                &::after {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:664px) {
+    .main {
+        margin: 0px 0px;
+        width: 100%;
+        height: auto;
+    }
+
+    .navbar {
+        box-shadow: 0px 0px 0px transparent;
+    }
+}
